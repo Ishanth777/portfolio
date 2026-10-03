@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ishanth G | Portfolio</title>
+  <meta name="description" content="Portfolio of Ishanth G - Full-Stack Developer, AI/ML Enthusiast, Competitive Programmer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">&lt;IG /&gt;</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#achievements">Achievements</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-content">
+      <p class="hero-greeting">Hi, I'm</p>
+      <h1 class="hero-name">Ishanth G</h1>
+      <div class="hero-tagline">
+        <span class="tagline-prefix">I'm a </span>
+        <span class="typed-text" id="typedText"></span>
+        <span class="cursor">|</span>
+      </div>
+      <p class="hero-description">
+        Computer Science &amp; Data Science student at BMS College of Engineering with a passion for building production-grade applications and solving complex problems.
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-rocket"></i> View Projects
+        </a>
+        <a href="ishanth_resume.pdf" download="Ishanth_G_Resume.pdf" class="btn btn-secondary">
+          <i class="fas fa-download"></i> Download Resume
+        </a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/Ishanth777" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/ishanth-g-785653328/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://leetcode.com/u/Ishanth_G_1209/" target="_blank" rel="noopener" aria-label="LeetCode"><i class="fas fa-code"></i></a>
+        <a href="mailto:ishanthg1209@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="mouse">
+        <div class="wheel"></div>
+      </div>
+      <p>Scroll Down</p>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">
+        <span class="title-number">01.</span> About Me
+      </h2>
+      <div class="about-grid">
+        <div class="about-text animate-on-scroll">
+          <p>
+            I'm a passionate Computer Science &amp; Data Science undergraduate at 
+            <strong>BMS College of Engineering</strong>, Bengaluru, maintaining a <strong>CGPA of 9.39/10</strong>. 
+            I love building full-stack applications, exploring AI/ML technologies, and solving algorithmic challenges.
+          </p>
+          <p>
+            My experience spans from developing production-grade RAG systems with LangChain and LangGraph 
+            to building full-stack web applications using the MERN stack. I'm also an avid competitive programmer 
+            with <strong>500+ problems solved on LeetCode</strong> and a maximum rating of <strong>1689</strong>.
+          </p>
+          <p>
+            When I'm not coding, you'll find me on the football field, swimming, or exploring new technologies. 
+            I believe in continuous learning and building solutions that make a real impact.
+          </p>
+          <div class="about-info">
+            <div class="info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Bengaluru, Karnataka, India</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <span>+91 9902508584</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <span>ishanthg1209@gmail.com</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-stats animate-on-scroll">
+          <div class="stat-card">
+            <div class="stat-number" data-target="9.39">0</div>
+            <div class="stat-label">CGPA</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="500" data-suffix="+">0</div>
+            <div class="stat-label">LeetCode Problems</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="1689">0</div>
+            <div class="stat-label">LC Max Rating</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="9">0</div>
+            <div class="stat-label">GitHub Repos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EDUCATION ============ -->
+  <section class="section section-alt" id="education">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">
+        <span class="title-number">02.</span> Education
+      </h2>
+      <div class="timeline">
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>BMS College Of Engineering</h3>
+              <span class="timeline-date"><i class="fas fa-calendar-alt"></i> Sep 2024 &ndash; Present</span>
+            </div>
+            <p class="timeline-degree">B.E. in Computer Science &amp; Data Science</p>
+            <div class="timeline-details">
+              <span class="badge badge-accent"><i class="fas fa-star"></i> CGPA: 9.39/10</span>
+              <span class="badge"><i class="fas fa-map-marker-alt"></i> Bengaluru, Karnataka</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>Vidya Mandir Ind PU College</h3>
+              <span class="timeline-date"><i class="fas fa-calendar-alt"></i> June 2022 &ndash; May 2024</span>
+            </div>
+            <p class="timeline-degree">Class 12 &ndash; Karnataka Secondary Education Board</p>
+            <div class="timeline-details">
+              <span class="badge badge-accent"><i class="fas fa-star"></i> Percentage: 96.5%</span>
+              <span class="badge"><i class="fas fa-map-marker-alt"></i> Bengaluru, Karnataka</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3>Jindal Public School</h3>
+              <span class="timeline-date"><i class="fas fa-calendar-alt"></i> 2011 &ndash; 2022</span>
+            </div>
+            <p class="timeline-degree">Class 10 &ndash; Karnataka Secondary Education Board</p>
+            <div class="timeline-details">
+              <span class="badge badge-accent"><i class="fas fa-star"></i> Percentage: 99.2%</span>
+              <span class="badge"><i class="fas fa-map-marker-alt"></i> Bengaluru, Karnataka</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section" id="skills">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">
+        <span class="title-number">03.</span> Skills &amp; Technologies
+      </h2>
+      <div class="skills-grid">
+        <div class="skill-category animate-on-scroll">
+          <div class="skill-category-header">
+            <i class="fas fa-code"></i>
+            <h3>Languages</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">R</span>
+          </div>
+        </div>
+        <div class="skill-category animate-on-scroll">
+          <div class="skill-category-header">
+            <i class="fas fa-server"></i>
+            <h3>Web &amp; Backend</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express.js</span>
+            <span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Flask</span>
+          </div>
+        </div>
+        <div class="skill-category animate-on-scroll">
+          <div class="skill-category-header">
+            <i class="fas fa-brain"></i>
+            <h3>AI / ML</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">LangChain</span>
+            <span class="skill-tag">LangGraph</span>
+            <span class="skill-tag">Qdrant</span>
+            <span class="skill-tag">Groq</span>
+            <span class="skill-tag">Logfire</span>
+            <span class="skill-tag">LLM Guardrails</span>
+          </div>
+        </div>
+        <div class="skill-category animate-on-scroll">
+          <div class="skill-category-header">
+            <i class="fas fa-database"></i>
+            <h3>Databases</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+          </div>
+        </div>
+        <div class="skill-category animate-on-scroll">
+          <div class="skill-category-header">
+            <i class="fas fa-tools"></i>
+            <h3>Tools</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">
+        <span class="title-number">04.</span> Featured Projects
+      </h2>
+      <div class="projects-grid">
+
+        <!-- Project 1 -->
+        <div class="project-card animate-on-scroll">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-brain"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/Ishanth777" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">DocuMind</h3>
+          <p class="project-subtitle">Production-Grade RAG System</p>
+          <ul class="project-description">
+            <li>Engineered a modular RAG pipeline using LangChain and LangGraph for document ingestion, chunking, embeddings, retrieval, and LLM orchestration.</li>
+            <li>Integrated Qdrant for vector storage and semantic retrieval, with LLM Guardrails, Gateway, and caching.</li>
+            <li>Added Logfire observability and Groq inference for real-time document querying.</li>
+          </ul>
+          <div class="project-tech">
+            <span>Python</span>
+            <span>LangChain</span>
+            <span>LangGraph</span>
+            <span>FastAPI</span>
+            <span>Qdrant</span>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card animate-on-scroll">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-plane-departure"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/Ishanth777" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Wanderers</h3>
+          <p class="project-subtitle">Travel Planning Platform</p>
+          <ul class="project-description">
+            <li>Full-stack travel platform for discovering destinations, exploring activities, and creating personalized itineraries.</li>
+            <li>Built RESTful APIs with Node.js and Express.js using MongoDB for data management.</li>
+            <li>Implemented search, trip organization, and recommendation features with responsive UI.</li>
+          </ul>
+          <div class="project-tech">
+            <span>Node.js</span>
+            <span>Express.js</span>
+            <span>MongoDB</span>
+            <span>HTML/CSS/JS</span>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card animate-on-scroll">
+          <div class="project-card-header">
+            <div class="project-icon"><i class="fas fa-utensils"></i></div>
+            <div class="project-links">
+              <a href="https://github.com/Ishanth777" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <h3 class="project-title">Campus Cravings</h3>
+          <p class="project-subtitle">Canteen Food Delivery Web App</p>
+          <ul class="project-description">
+            <li>Full-stack food ordering platform for students and staff to browse menus, place orders, and track status.</li>
+            <li>RESTful APIs with Node.js, Express.js, MongoDB for user management, cart, and orders.</li>
+            <li>Responsive React.js frontend for menu browsing, checkout, and order tracking.</li>
+          </ul>
+          <div class="project-tech">
+            <span>React.js</span>
+            <span>Node.js</span>
+            <span>Express.js</span>
+            <span>MongoDB</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACHIEVEMENTS ============ -->
+  <section class="section" id="achievements">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">
+        <span class="title-number">05.</span> Achievements
+      </h2>
+
+      <!-- Competitive Programming Stats -->
+      <div class="cp-stats animate-on-scroll">
+        <div class="cp-stat">
+          <div class="cp-icon"><i class="fas fa-code"></i></div>
+          <div class="cp-number" data-target="500" data-suffix="+">0</div>
+          <div class="cp-label">LeetCode Problems</div>
+        </div>
+        <div class="cp-stat">
+          <div class="cp-icon"><i class="fas fa-chart-line"></i></div>
+          <div class="cp-number" data-target="1689">0</div>
+          <div class="cp-label">LC Max Rating</div>
+        </div>
+        <div class="cp-stat">
+          <div class="cp-icon"><i class="fas fa-laptop-code"></i></div>
+          <div class="cp-number" data-target="70" data-suffix="+">0</div>
+          <div class="cp-label">GFG Problems</div>
+        </div>
+        <div class="cp-stat">
+          <div class="cp-icon"><i class="fas fa-trophy"></i></div>
+          <div class="cp-number" data-target="60" data-suffix="+">0</div>
+          <div class="cp-label">Codeforces Problems</div>
+        </div>
+      </div>
+
+      <!-- Achievement Cards -->
+      <div class="achievements-grid">
+        <div class="achievement-card animate-on-scroll">
+          <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+          <div class="achievement-content">
+            <h3>Smart India Hackathon 2026</h3>
+            <p>Cleared internal hackathon with Team Bharat Gig.</p>
+          </div>
+        </div>
+        <div class="achievement-card animate-on-scroll">
+          <div class="achievement-icon"><i class="fas fa-code"></i></div>
+          <div class="achievement-content">
+            <h3>LeetCode</h3>
+            <p>500+ problems solved, maximum rating 1689.</p>
+            <a href="https://leetcode.com/u/Ishanth_G_1209/" target="_blank" rel="noopener" class="achievement-link">View Profile <i class="fas fa-external-link-alt"></i></a>
+          </div>
+        </div>
+        <div class="achievement-card animate-on-scroll">
+          <div class="achievement-icon"><i class="fas fa-laptop-code"></i></div>
+          <div class="achievement-content">
+            <h3>GeeksforGeeks</h3>
+            <p>70+ problems solved.</p>
+          </div>
+        </div>
+        <div class="achievement-card animate-on-scroll">
+          <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+          <div class="achievement-content">
+            <h3>Codeforces</h3>
+            <p>60+ problems solved.</p>
+          </div>
+        </div>
+        <div class="achievement-card animate-on-scroll">
+          <div class="achievement-icon"><i class="fas fa-futbol"></i></div>
+          <div class="achievement-content">
+            <h3>Football</h3>
+            <p>Represented school teams at district level and won multiple inter-college football cups.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESUME ============ -->
+  <section class="section section-alt" id="resume">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">
+        <span class="title-number">06.</span> Resume
+      </h2>
+      <div class="resume-wrapper animate-on-scroll">
+        <div class="resume-card">
+          <iframe src="ishanth_resume.pdf" class="resume-embed" title="Ishanth G - Resume"></iframe>
+        </div>
+        <div class="resume-actions">
+          <a href="ishanth_resume.pdf" target="_blank" rel="noopener" class="btn btn-primary">
+            <i class="fas fa-expand"></i> View Full Size
+          </a>
+          <a href="ishanth_resume.pdf" download="Ishanth_G_Resume.pdf" class="btn btn-secondary">
+            <i class="fas fa-download"></i> Download PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2 class="section-title animate-on-scroll">
+        <span class="title-number">07.</span> Get In Touch
+      </h2>
+      <div class="contact-grid">
+        <div class="contact-info animate-on-scroll">
+          <p class="contact-intro">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out!
+          </p>
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:ishanthg1209@gmail.com">ishanthg1209@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <h4>Phone</h4>
+                <a href="tel:+919902508584">+91 9902508584</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <h4>Location</h4>
+                <p>Bengaluru, Karnataka, India</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-socials">
+            <a href="https://github.com/Ishanth777" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/ishanth-g-785653328/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://leetcode.com/u/Ishanth_G_1209/" target="_blank" rel="noopener" aria-label="LeetCode"><i class="fas fa-code"></i></a>
+          </div>
+        </div>
+        <form class="contact-form animate-on-scroll" id="contactForm">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="#hero" class="footer-logo">&lt;IG /&gt;</a>
+          <p>Building things that matter.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-social">
+          <h4>Connect</h4>
+          <div class="footer-social-icons">
+            <a href="https://github.com/Ishanth777" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/ishanth-g-785653328/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://leetcode.com/u/Ishanth_G_1209/" target="_blank" rel="noopener" aria-label="LeetCode"><i class="fas fa-code"></i></a>
+            <a href="mailto:ishanthg1209@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Ishanth G. All rights reserved.</p>
+        <p>Designed &amp; Built with <i class="fas fa-heart" style="color: var(--accent);"></i></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
