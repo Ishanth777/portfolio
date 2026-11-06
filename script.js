@@ -9,6 +9,57 @@ document.addEventListener('DOMContentLoaded', () => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // ==========================================================================
+  // 0. PRELOADER
+  // ==========================================================================
+  const loader = document.getElementById('loader');
+  if (loader) {
+    setTimeout(() => loader.classList.add('done'), 1000);
+  }
+
+  // ==========================================================================
+  // 0b. PREMIUM CUSTOM CURSOR (desktop only)
+  // ==========================================================================
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  if (finePointer && !prefersReducedMotion) {
+    const dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    const ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    document.body.append(dot, ring);
+    document.body.classList.add('has-cursor');
+
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    });
+
+    (function animateRing() {
+      ringX += (mouseX - ringX) * 0.16;
+      ringY += (mouseY - ringY) * 0.16;
+      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(animateRing);
+    })();
+
+    const cursorTargets =
+      'a, button, .project-card, .stat-card, .cp-stat, .achievement-card, .skill-category, .timeline-content, .hero-card';
+
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(cursorTargets)) document.body.classList.add('cursor-hover');
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(cursorTargets)) document.body.classList.remove('cursor-hover');
+    });
+  }
+
+  // ==========================================================================
   // 1. ORGANIC TYPING ANIMATION
   // ==========================================================================
   const typedTextEl = document.getElementById('typedText');
@@ -20,45 +71,51 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   if (typedTextEl) {
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
+    if (prefersReducedMotion) {
+      typedTextEl.textContent = phrases[0];
+      const caret = document.querySelector('.cursor');
+      if (caret) caret.style.display = 'none';
+    } else {
+      let phraseIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
 
-    function randBetween(min, max) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+      function randBetween(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
 
-    function typeEffect() {
-      const currentPhrase = phrases[phraseIndex];
-      let delay;
+      function typeEffect() {
+        const currentPhrase = phrases[phraseIndex];
+        let delay;
 
-      if (isDeleting) {
-        typedTextEl.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
-        delay = randBetween(28, 55); // Snappy deletion
-      } else {
-        typedTextEl.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
-        // Natural human typing rhythm
-        delay = randBetween(70, 120);
-        if (currentPhrase[charIndex - 1] === ' ' || currentPhrase[charIndex - 1] === '/') {
-          delay += 60;
+        if (isDeleting) {
+          typedTextEl.textContent = currentPhrase.substring(0, charIndex - 1);
+          charIndex--;
+          delay = randBetween(28, 55); // Snappy deletion
+        } else {
+          typedTextEl.textContent = currentPhrase.substring(0, charIndex + 1);
+          charIndex++;
+          // Natural human typing rhythm
+          delay = randBetween(70, 120);
+          if (currentPhrase[charIndex - 1] === ' ' || currentPhrase[charIndex - 1] === '/') {
+            delay += 60;
+          }
         }
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+          delay = 2200; // Pause at end of phrase
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          phraseIndex = (phraseIndex + 1) % phrases.length;
+          delay = 400; // Pause before typing next
+        }
+
+        setTimeout(typeEffect, delay);
       }
 
-      if (!isDeleting && charIndex === currentPhrase.length) {
-        delay = 2200; // Pause at end of phrase
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        delay = 400; // Pause before typing next
-      }
-
-      setTimeout(typeEffect, delay);
+      typeEffect();
     }
-
-    typeEffect();
   }
 
   // ==========================================================================
@@ -87,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
       canvas.height = height * dpr;
       canvas.style.width = width + 'px';
       canvas.style.height = height + 'px';
-      ctx.scale(dpr, dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
     resizeCanvas();
@@ -158,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(56, 189, 248, ${Math.max(0.1, this.currentAlpha)})`;
+        ctx.fillStyle = `rgba(198, 255, 0, ${Math.max(0.08, this.currentAlpha * 0.7)})`;
         ctx.fill();
       }
     }
@@ -166,8 +223,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function initParticles() {
       const w = heroSection.clientWidth;
       const h = heroSection.clientHeight;
-      // Balanced particle count based on display size
-      const count = Math.min(65, Math.floor((w * h) / 18000));
+      // Restrained particle count for a calm, paper-like atmosphere
+      const count = Math.min(46, Math.floor((w * h) / 26000));
       particles = [];
       for (let i = 0; i < count; i++) {
         particles.push(new Particle(w, h));
@@ -187,9 +244,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDist) {
-            const opacity = (1 - dist / maxDist) * 0.16;
+            const opacity = (1 - dist / maxDist) * 0.09;
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(56, 189, 248, ${opacity})`;
+            ctx.strokeStyle = `rgba(198, 255, 0, ${opacity})`;
             ctx.lineWidth = 0.6;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -380,13 +437,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const counterObserver = new IntersectionObserver(animateCounters, {
-    threshold: 0.25
-  });
+  function setFinalCounters() {
+    document.querySelectorAll('.about-stats [data-target], .cp-stats [data-target]').forEach(counter => {
+      const target = parseFloat(counter.getAttribute('data-target'));
+      const suffix = counter.getAttribute('data-suffix') || '';
+      const isDecimal = target % 1 !== 0;
+      counter.textContent = (isDecimal ? target.toFixed(2) : target) + suffix;
+    });
+  }
 
-  document.querySelectorAll('.about-stats, .cp-stats').forEach(el => {
-    counterObserver.observe(el);
-  });
+  if (prefersReducedMotion) {
+    setFinalCounters();
+  } else {
+    const counterObserver = new IntersectionObserver(animateCounters, {
+      threshold: 0.25
+    });
+
+    document.querySelectorAll('.about-stats, .cp-stats').forEach(el => {
+      counterObserver.observe(el);
+    });
+  }
 
   // ==========================================================================
   // 8. NAVIGATION, ACTIVE LINK TRACKING & MOBILE MENU
@@ -408,26 +478,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Mobile menu toggle
   if (hamburger && navLinks) {
-    hamburger.addEventListener('click', () => {
-      const isOpen = hamburger.classList.toggle('active');
-      navLinks.classList.toggle('active');
+    const setMenuState = (isOpen) => {
+      hamburger.classList.toggle('active', isOpen);
+      navLinks.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
+    };
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = !hamburger.classList.contains('active');
+      setMenuState(isOpen);
     });
 
     navAnchors.forEach(anchor => {
       anchor.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
+        setMenuState(false);
       });
     });
 
     // Close on click outside
     document.addEventListener('click', (e) => {
       if (!hamburger.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
+        setMenuState(false);
+      }
+    });
+
+    // Close on Escape for keyboard users
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+        setMenuState(false);
+        hamburger.focus();
       }
     });
   }
@@ -460,7 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const target = document.querySelector(href);
         if (target) {
-          const navOffset = 64;
+          const navOffset = (navbar ? navbar.offsetHeight : 68) + 16;
           const targetPosition = target.getBoundingClientRect().top + window.scrollY - navOffset;
           window.scrollTo({
             top: targetPosition,
@@ -509,8 +589,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setTimeout(() => {
         btn.innerHTML = '<i class="fas fa-check"></i> Message Received!';
-        btn.style.background = '#10b981';
-        btn.style.color = '#ffffff';
+        btn.style.background = 'var(--accent)';
+        btn.style.color = '#050505';
 
         setTimeout(() => {
           btn.innerHTML = originalHtml;
